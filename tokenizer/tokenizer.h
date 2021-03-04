@@ -2,11 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct{
-	char* token_type;
-	char* token_value;
+typedef struct token
+{
+	char *token_type;
+	char *token_value;
 } token;
 
-token* tokenize(char* input);
-
-
+token *tokenize(char *input);

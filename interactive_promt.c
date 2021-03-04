@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "parser/parser.h"
-#include "tokenizer/tokenizer.h"
 
 static int input_size = 2048;
 
@@ -10,7 +9,7 @@ void process(char *input)
 {
 	token *tokenizer_result = tokenize(input);
 	/* Number of tokens are equal to number of character in source code */
-	ast_node *parser_result = parse(tokenizer_result, strlen(input));
+	// ast_node *parser_result = parse(tokenizer_result, strlen(input));
 }
 
 char *read()
@@ -18,6 +17,7 @@ char *read()
 	//read line into dynamically allocated input.
 	char *input = malloc(input_size);
 	fgets(input, input_size, stdin);
+	return input;
 }
 
 int main(int argc, char **argv)

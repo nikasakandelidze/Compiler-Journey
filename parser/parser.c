@@ -1,5 +1,7 @@
 #include "parser.h"
 
+static int default_number_of_children_nodes = 1;
+
 static ast_node *create_digit_node_from_token(token *token)
 {
 	ast_node *node = malloc(sizeof(ast_node));
@@ -14,28 +16,37 @@ static ast_node *create_digit_node_from_token(token *token)
 */
 ast_node *parse(token *tokens, int number_of_tokens)
 {
+	ast_node *root_node = malloc(sizeof(ast_node));
+	root_node->node_type = strdup("program");
+	/*
+		Let's default a root node to have 1 child.
+	*/
+	root_node->children_nodes = malloc(default_number_of_children_nodes * sizeof(ast_node*));
+	ast_node** next_child = root_node->children_nodes; //initialise pointer to next child
 	for (int i = 0; i < number_of_tokens; i++)
 	{
-
-		if (number_of_tokens == 0)
+		if (strcmp(tokens[i].token_type, "parentheses"))
 		{
-			return NULL;
+			/*
+				What happens here?
+			*/
 		}
-		else if (strcmp(tokens[0].token_type, "parentheses"))
-		{
+		else if (strcmp(tokens[i].token_type, "digit"))
+		{	
+			ast_node* digit=create_digit_node_from_token(tokens);
+			memcpy(next_child, &digit, sizeof(ast_node*));
+			next_child=&digit;
 		}
-		else if (strcmp(tokens[0].token_type, "digit"))
-		{
-			create_digit_node_from_token(tokens);
-		}
-		else if (strcmp(tokens[0].token_type, "plus"))
+		else if (strcmp(tokens[i].token_type, "plus"))
 		{
 			ast_node *node = malloc(sizeof(ast_node));
-			node->node_value = strdup("+");
+			node->node_value = strdup("+");		
 			node->node_type = strdup("plus");
 			node->children_nodes = malloc(sizeof(ast_node) * 2); //2 because we are making our lives easy today.
-			memcpy(node->children_nodes, create_digit_node_from_token(node->children_nodes + 1), sizeof(ast_node));
-			memcpy(node->children_nodes, create_digit_node_from_token(node->children_nodes + 2), sizeof(ast_node));
+			node->children_nodes[0]=NULL;
+			node->children_nodes[1]=NULL;
+			memcpy(next_child, &node, sizeof(ast_node*));
+			next_child=&node;
 		}
 	}
 

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "../tokenizer/tokenizer.h"
 /*
 	node_type: { list, func(+,-,*,/) , number}
 */
@@ -9,8 +9,8 @@
 typedef struct{
 	char* node_type; // node_type-s can be {sum, product, digit, list....}
 	char* node_value;
-	abs_node** children_nodes;
-}abs_node;
+	ast_node** children_nodes;
+}ast_node;
 
 
-char* parse(token* tokens, int number_of_tokens);
+ast_node* parse(token* tokens, int number_of_tokens);

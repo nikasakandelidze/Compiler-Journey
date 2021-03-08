@@ -4,11 +4,10 @@
 static int input_size = 2048;
 
 void process(char *input)
-{
+{	
 	token *tokenizer_result = tokenize(input);
 	/* Number of tokens are equal to number of character in source code */
-	ast_node *parser_result = parse(tokenizer_result, strlen(input));
-	puts("movida");
+	ast_node *parser_result = parse(tokenizer_result, strlen(input)-1); //-1 because in input last character is newline and we don't need it
 	puts(parser_result->node_type);
 	puts(parser_result->node_value);
 }

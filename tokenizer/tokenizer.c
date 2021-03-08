@@ -1,5 +1,5 @@
 #include "tokenizer.h"
-#include <ctype.h>
+
 
 static int initial_allocated_size = 100;
 
@@ -47,11 +47,13 @@ token *tokenize(char *input)
 		else if (input[i] == '*')
 		{
 			new_token->token_type = strdup("product");
+		}else{
+			continue;
+			current_size++;
 		}
 
 		/* Copy newly construct token into array of tokens.*/
 		memcpy(tokens + i, new_token, sizeof(token));
-		current_size++;
 	}
 	return tokens;
 }

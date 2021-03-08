@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "parser/parser.h"
 
 static int input_size = 2048;
@@ -9,7 +7,10 @@ void process(char *input)
 {
 	token *tokenizer_result = tokenize(input);
 	/* Number of tokens are equal to number of character in source code */
-	// ast_node *parser_result = parse(tokenizer_result, strlen(input));
+	ast_node *parser_result = parse(tokenizer_result, strlen(input));
+	puts("movida");
+	puts(parser_result->node_type);
+	puts(parser_result->node_value);
 }
 
 char *read()

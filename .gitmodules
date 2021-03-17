@@ -1,3 +1,0 @@
-[submodule "dependencies/mpc"]
-	path = dependencies/mpc
-	url = https://github.com/orangeduck/mpc.git

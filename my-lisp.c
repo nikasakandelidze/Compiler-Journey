@@ -1,28 +1,22 @@
 #include <stdio.h>
-// #include "parser/parser.h"
 #include "parser/grammar/grammar.c"
+#include "backend/evaluator.c"
 
 static int input_size = 2048;
 
 void process(char *input, const Grammar* my_lisp_grammar_ptr)
 {	
-	// token *tokenizer_result = tokenize(input);
-	// /* Number of tokens are equal to number of character in source code */
-	// ast_node *parser_result = parse(tokenizer_result, strlen(input)-1); //-1 because in input last character is newline and we don't need it
-	// puts(parser_result->node_type);
-	// puts(parser_result->node_value);
-	
 	mpc_result_t r;
 	if (mpc_parse("<stdin>", input, my_lisp_grammar_ptr->My_Lisp, &r)) {
-	/* On Success Print the AST */
-	mpc_ast_print(r.output);
-	mpc_ast_delete(r.output);
+		/* On Success Print the AST */
+		long reuslt = numberEvaluator(r.output);
+		printf("%li\n",result);
+		mpc_ast_delete(r.output);
 	} else {
-	/* Otherwise Print the Error */
-	mpc_err_print(r.error);
-	mpc_err_delete(r.error);
+		/* Otherwise Print the Error */
+		mpc_err_print(r.error);
+		mpc_err_delete(r.error);
 	}
-
 }
 
 char *read()

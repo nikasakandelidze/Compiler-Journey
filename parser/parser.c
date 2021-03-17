@@ -1,5 +1,8 @@
 #include "parser.h"
 
+/*
+	This parser will should be used for constructing intermediate representation(AST) instead of library "mpc" which is currently used for parsing.
+*/
 
 static int default_number_of_children_nodes = 1;
 

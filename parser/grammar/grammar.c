@@ -1,4 +1,11 @@
-#include "../../dependencies/mpc/mpc.h"
+#ifndef mpc_included 
+
+#include "dependencies/mpc/mpc.h"
+
+#define mpc_included 1
+
+#endif 
+
 
 typedef struct Grammar{
     mpc_parser_t* My_Lisp;

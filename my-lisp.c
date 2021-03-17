@@ -9,7 +9,7 @@ void process(char *input, const Grammar* my_lisp_grammar_ptr)
 	mpc_result_t r;
 	if (mpc_parse("<stdin>", input, my_lisp_grammar_ptr->My_Lisp, &r)) {
 		/* On Success Print the AST */
-		long reuslt = numberEvaluator(r.output);
+		long result = numberEvaluator(r.output);
 		printf("%li\n",result);
 		mpc_ast_delete(r.output);
 	} else {
@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 		process(input, my_lisp_grammar_ptr);
 	}
 	
-	// mpc_cleanup(4, my_lisp_grammar_ptr->Number, my_lisp_grammar_ptr->Operator, my_lisp_grammar_ptr->Expression, my_lisp_grammar_ptr->My_Lisp);
+	mpc_cleanup(4, my_lisp_grammar_ptr->Number, my_lisp_grammar_ptr->Operator, my_lisp_grammar_ptr->Expression, my_lisp_grammar_ptr->My_Lisp);
 
 	return 0;
 }

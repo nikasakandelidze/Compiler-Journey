@@ -1,6 +1,6 @@
 #ifndef mpc_included 
 
-#include "dependencies/mpc/mpc.h"
+#include "../dependencies/mpc/mpc.h"
 
 #define mpc_included 1
 
@@ -28,8 +28,8 @@ long numberEvaluator(mpc_ast_t* t){
 
     /* Iterate remaining children and evaluate them */
     int i=3;
-    while(strstr(t->children[i]->tag, "expr")){
-        x=numbers_eval_operation(x, op, numberEvaluator(t->children[i]->contents));
+    while(strstr(t->children[i]->tag, "expression")){
+        x=numbers_eval_operation(x, op, numberEvaluator(t->children[i]));
         i++;
     }
     return x;

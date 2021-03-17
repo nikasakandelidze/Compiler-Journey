@@ -4,7 +4,7 @@
 
 static int input_size = 2048;
 
-void process(char *input, Grammar* my_lisp_grammar_ptr)
+void process(char *input, const Grammar* my_lisp_grammar_ptr)
 {	
 	// token *tokenizer_result = tokenize(input);
 	// /* Number of tokens are equal to number of character in source code */
@@ -48,7 +48,7 @@ int main(int argc, char **argv)
 		process(input, my_lisp_grammar_ptr);
 	}
 	
-	mpc_cleanup(4, my_lisp_grammar_ptr->Number, my_lisp_grammar_ptr->Operator, my_lisp_grammar_ptr->Expression, my_lisp_grammar_ptr->My_Lisp);
+	// mpc_cleanup(4, my_lisp_grammar_ptr->Number, my_lisp_grammar_ptr->Operator, my_lisp_grammar_ptr->Expression, my_lisp_grammar_ptr->My_Lisp);
 
 	return 0;
 }

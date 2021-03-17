@@ -34,7 +34,7 @@ Grammar* getGrammar(){
     grammar->Number= mpc_new("number");
     grammar->Expression=mpc_new("expression");
     grammar->Operator=mpc_new("operator");
-    grammar->My_Lisp=mpc_new("my_Lisp");
+    grammar->My_Lisp=mpc_new("my_lisp");
     return grammar;
 }
 
@@ -48,8 +48,8 @@ Grammar* initialiseGrammarForMpc(){
     "                                                     \
         number   : /-?[0-9]+/ ;                             \
         operator : '+' | '-' | '*' | '/' ;                  \
-        expr     : <number> | '(' <operator> <expr>+ ')' ;  \
-        my_Lisp    : /^/ <operator> <expr>+ /$/ ;             \
+        expression     : <number> | '(' <operator> <expression>+ ')' ;  \
+        my_lisp    : /^/ <operator> <expression>+ /$/ ;             \
     ",
     grammar->Number, grammar->Operator, grammar->Expression, grammar->My_Lisp);
     return grammar;

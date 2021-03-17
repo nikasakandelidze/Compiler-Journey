@@ -2,5 +2,5 @@
 
 
 
-gcc my-lisp.c dependencies/mpc/mpc.c -o my-lisp
+gcc my-lisp.c dependencies/mpc.c -o my-lisp
 
